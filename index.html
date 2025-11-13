@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatic Calendar</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #630688, #022775);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calendar {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 30px 50px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    .date {
+      font-size: 2em;
+      font-weight: 600;
+    }
+    .time {
+      font-size: 2.5em;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .day {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+    <header style="background-color: rgb(204, 0, 255);color: gold;">
+        <h1>GARRY'S FULL STACK DEVELOPER'S TEAM PRESENTS<br>
+            - AUTOMATIC DATE & TIME CALENDAR
+    </header><br><br><br>
+    <br>
+  <div class="calendar">
+    <div class="day" id="day">Loading...</div>
+    <div class="date" id="date"></div>
+    <div class="time" id="time"></div>
+  </div>
+
+  <script>
+    function updateCalendar() {
+      const now = new Date();
+
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const months = ["January", "February", "March", "April", "May", "June", 
+                      "July", "August", "September", "October", "November", "December"];
+
+      const dayName = days[now.getDay()];
+      const day = now.getDate();
+      const month = months[now.getMonth()];
+      const year = now.getFullYear();
+
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const seconds = String(now.getSeconds()).padStart(2, "0");
+
+      document.getElementById("day").textContent = dayName;
+      document.getElementById("date").textContent = `${day} ${month} ${year}`;
+      document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    updateCalendar();
+    setInterval(updateCalendar, 1000);
+  </script>
+  <footer style="background-color: red;color: gold;margin-top: 10rem;">
+    <h2>Developed & Created By :- Garry's Developers Team</h2>
+    <h3>Owner:-GURMAN SINGH</h3>
+  </footer>
+</body>
+</html>
